@@ -28,7 +28,7 @@ async function executeCommand(req, res) {
       return
     }
 
-    exec(command, { cwd: process.cwd() }, (_, stdout, stderr) => {
+    exec(command, { cwd: process.cwd(), stdio: 'ignore' }, (_, stdout, stderr) => {
       res.statusCode = 200
       res.end(JSON.stringify({ stdout, stderr }))
     })
